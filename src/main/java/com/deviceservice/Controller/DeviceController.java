@@ -50,7 +50,14 @@ public class DeviceController {
     @GetMapping("/edit/{id}")
     public ModelAndView editDevice( @PathVariable("id") Long deviceId) {
         ModelAndView mav = new ModelAndView("device-form");
-        mav.addObject("device", deviceRepository.findById(deviceId));
+        mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
+                new IllegalArgumentException("Object not exist")));
         return mav;
+    }
+
+    @GetMapping("/remove/{id}")
+    public String deleteDevice(@PathVariable("id") Long deviceId) {
+        deviceRepository.deleteById(deviceId);
+        return "redirect:/";
     }
 }

@@ -32,25 +32,25 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="add">Add Device</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="add">Add Device</a>
                 </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
             <div class="container-fluid">
 
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-                <h2>List of cities</h2>
+                <h2>Device service v0.1</h2>
 
                 <table>
                     <tr>
@@ -72,7 +72,8 @@
                     <tr th:each="device : ${list}">
                         <td th:text="${device.id}">Id</td>
                         <td th:text="${device.name}">Name</td>
-                        <a th:href="@{/edit/{id}(id=${device.id})}">Edit</a> -
+                        <a th:href="@{/edit/{id}(id=${device.id})}">Edit</a>
+                        <a th:href="@{/remove/{id}(id=${device.id})}">Remove</a> -
                     </tr>
                 </table>
             </div>
