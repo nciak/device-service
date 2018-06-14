@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Home Page
+                    </a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/addcategory">Categories</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <h2>Device service v0.1</h2>
+                <h3>Add new category</h3>
+
+                    <form th:action="@{/addcategory}" th:object="${category}" method="post">
+
+                        <input type="hidden" th:field="${category.id}" th:value="${category.id}" />
+
+                        <div >
+                            <label th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
+                                   for="name">Category name:</label><br/>
+
+                            <input
+                                    th:field="${category.name}"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    th:class="${#fields.hasErrors('name') ? 'error' : ''}"/>
+
+                            <p
+                                    th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
+                                    th:if="${#fields.hasErrors('name')}"
+                                    th:errors="${category.name}"></p>
+                        </div>
+
+
+                        <input type="submit" name="submit" value="Add"> </input>
+                    </form>
+
+                <h3>List of categories</h3>
+                <table style="width:100%" border="2px solid black">
+                    <tr>
+                        <th>Id</th>
+                        <th>Category Name</th>
+                        <th>Options</th>
+
+                    </tr>
+
+
+                    <tr th:each="category : ${categories}">
+                        <td th:text="${category.id}">Id</td>
+                        <td th:text="${category.name}">Name</td>
+
+                        <!--<td><a th:href="@{/edit/{id}(id=${device.id})}">Edit</a> - -->
+                            <!--<a th:href="@{/remove/{id}(id=${device.id})}">Remove</a> - -->
+                            <!--</td>-->
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

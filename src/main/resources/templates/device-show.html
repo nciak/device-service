@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Home Page
+                    </a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/addcategory">Categories</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/dd">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+                <li>
+                    <a href="/add">Add Device</a>
+                </li>
+            </ul>
+            xD
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <h2>Device service v0.1</h2>
+                <h3>Device details</h3>
+
+                Device:
+                <p th:text="${device.name}"></p>
+
+                Description: <p th:text="${device.description}"></p>
+                Category: <p th:text="${device.category.name}"></p>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
