@@ -2,9 +2,11 @@ package com.deviceservice.Controller;
 
 import com.deviceservice.Model.Category;
 import com.deviceservice.Model.Device;
+import com.deviceservice.Model.Parameter;
 import com.deviceservice.Repository.CategoryRepository;
 import com.deviceservice.Repository.DeviceRepository;
 
+import com.deviceservice.Repository.ParameterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,9 @@ public class DeviceController {
 
     @Autowired
     CategoryRepository categoryRepository;
+
+    @Autowired
+    ParameterRepository parameterRepository;
 
     @RequestMapping("/")
     public ModelAndView getDeviceList() {
@@ -59,6 +64,8 @@ public class DeviceController {
         mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
                 new IllegalArgumentException("Object not exist")));
         mav.addObject("categories", categoryRepository.findAll());
+
+
         return mav;
     }
 
@@ -73,6 +80,8 @@ public class DeviceController {
         ModelAndView mav = new ModelAndView("device-show");
         mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
                 new IllegalArgumentException("Object not exist")));
+        mav.addObject("parameters", parameterRepository.findParametersByDeviceId(deviceId));
+
         return mav;
     }
 

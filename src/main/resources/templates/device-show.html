@@ -71,6 +71,12 @@
                 Description: <p th:text="${device.description}"></p>
                 Category: <p th:text="${device.category.name}"></p>
 
+                Parameters:
+                <div th:each="parameter : ${parameters}">
+                    <p th:text="${parameter.name}"></p>
+                    <p th:text="${parameter.value}"></p>
+                    </div>
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->

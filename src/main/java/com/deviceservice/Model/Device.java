@@ -2,7 +2,7 @@ package com.deviceservice.Model;
 
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -20,6 +20,9 @@ public class Device {
 
     @ManyToOne(targetEntity=Category.class)
     private Category category;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Parameter> parameters;
 
     public Long getId() {
         return id;
