@@ -1,13 +1,8 @@
 package com.deviceservice.Model;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
+
 
 
 @Entity
@@ -20,6 +15,11 @@ public class Device {
     private Long id;
 
     private String name;
+
+    private String description;
+
+    @ManyToOne(targetEntity=Category.class)
+    private Category category;
 
     public Long getId() {
         return id;
@@ -37,11 +37,28 @@ public class Device {
         this.name = deviceName;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Device{" +
                 "id=" + id +
-                ", deviceName='" + name + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

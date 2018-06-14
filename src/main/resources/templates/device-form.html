@@ -12,10 +12,10 @@
     <title>Simple Sidebar - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -27,30 +27,30 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    <a href="/">
+                        Home Page
                     </a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/addcategory">Categories</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
             </ul>
         </div>
@@ -63,14 +63,14 @@
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
                 <h2>Device service v0.1</h2>
 
-                <table>
+
                     <form th:action="@{/add}" th:object="${device}" method="post">
 
                         <input type="hidden" th:field="${device.id}" th:value="${device.id}" />
 
-                        <div>
+                        <div >
                             <label th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
-                                   for="name">Title:</label><br/>
+                                   for="name">Device name:</label><br/>
 
                             <input
                                     th:field="${device.name}"
@@ -84,9 +84,34 @@
                                     th:if="${#fields.hasErrors('name')}"
                                     th:errors="${device.name}"></p>
                         </div>
+
+                        <div>
+                            <label th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
+                                   for="name">Device description:</label><br/>
+
+                            <input
+                                    th:field="${device.description}"
+                                    type="text"
+                                    id="description"
+                                    name="description"
+                                    th:class="${#fields.hasErrors('description') ? 'error' : ''}"/>
+
+                            <p
+                                    th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
+                                    th:if="${#fields.hasErrors('description')}"
+                                    th:errors="${device.description}"></p>
+                        </div>
+                        <div>
+                            <label th:class="${#fields.hasErrors('category.id') ? 'error-text' : ''}"
+                                   for="category">Category:</label><br/>
+
+                            <select class="form-control" th:field="${device.category.id}"  id="category">
+                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                            </select>
+                        </div>
                         <input type="submit" name="submit" value="Add"> </input>
                     </form>
-                </table>
+
             </div>
         </div>
         <!-- /#page-content-wrapper -->
@@ -95,8 +120,8 @@
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>

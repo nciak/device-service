@@ -12,10 +12,10 @@
     <title>Simple Sidebar - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -27,32 +27,33 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    <a href="/">
+                        Home Page
                     </a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/addcategory">Categories</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
                 <li>
-                    <a href="add">Add Device</a>
+                    <a href="/add">Add Device</a>
                 </li>
             </ul>
+            
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -63,17 +64,23 @@
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
                 <h2>Device service v0.1</h2>
 
-                <table>
+                <table style="width:100%" border="2px solid black">
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Category</th>
+                        <th>Options</th>
+
                     </tr>
+
 
                     <tr th:each="device : ${list}">
                         <td th:text="${device.id}">Id</td>
                         <td th:text="${device.name}">Name</td>
-                        <a th:href="@{/edit/{id}(id=${device.id})}">Edit</a>
+                        <td th:text="${device.category.name}">Name</td>
+                        <td><a th:href="@{/edit/{id}(id=${device.id})}">Edit</a> -
                         <a th:href="@{/remove/{id}(id=${device.id})}">Remove</a> -
+                        <a th:href="@{/show/{id}(id=${device.id})}">Show Device</a></td>
                     </tr>
                 </table>
             </div>
@@ -84,8 +91,8 @@
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
