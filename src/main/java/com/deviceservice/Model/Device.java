@@ -26,6 +26,9 @@ public class Device {
     @OneToMany(mappedBy = "device")
     private List<Parameter> parameters;
 
+    @ManyToOne(targetEntity=Status.class)
+    private Status status;
+
     public Long getId() {
         return id;
     }
@@ -58,6 +61,14 @@ public class Device {
         this.description = description;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public List<Parameter> getParameters() {
         return parameters;
     }
@@ -72,6 +83,9 @@ public class Device {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", category=" + category +
+                ", parameters=" + parameters +
+                ", status=" + status +
                 '}';
     }
 }
