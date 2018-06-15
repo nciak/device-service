@@ -85,7 +85,7 @@
 
                         <div>
                             <a href="#" class="add-comment">Add comment</a>
-                            <a th:href="@{/parameters/device-{id}(id=${device.id})}" class="show-comments">Show comments</a>
+                            <!--<a th:href="@{/parameters/device-{id}(id=${device.id})}" class="show-comments">Show comments</a>-->
                             <form method="post" th:action="@{/parameters/add}" class="comment-form" th:object="${parameter}">
 
                                 <input type="hidden" th:attr="value=${device.id}" name="device.id" />

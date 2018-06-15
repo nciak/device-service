@@ -19,21 +19,21 @@ public class ParameterController {
 
 
 
-    @RequestMapping("/device-{id}")
-    public ModelAndView getParameters(@PathVariable("id") Long deviceId) {
-        return getParameterListView(deviceId);
-    }
+//    @RequestMapping("/device-{id}")
+//    public ModelAndView getParameters(@PathVariable("id") Long deviceId) {
+//        return getParameterListView(deviceId);
+//    }
 
 
     @PostMapping("/add")
     public ModelAndView saveParameter(@ModelAttribute("parameter") Parameter parameter)
     {
         parameterRepository.save(parameter);
-        return new ModelAndView("redirect:/parameters/device-" + parameter.getDevice().getId());
+        return new ModelAndView("redirect:/" );
     }
 
-    private ModelAndView getParameterListView(Long deviceId) {
-        return new ModelAndView("param", "parameters",
-                parameterRepository.findParametersByDeviceId(deviceId));
-    }
+//    private ModelAndView getParameterListView(Long deviceId) {
+//        return new ModelAndView("param", "parameters",
+//                parameterRepository.findParametersByDeviceId(deviceId));
+//    }
 }
