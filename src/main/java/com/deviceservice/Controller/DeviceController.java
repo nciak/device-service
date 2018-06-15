@@ -85,12 +85,21 @@ public class DeviceController {
         ModelAndView mav = new ModelAndView("device-show");
         mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
                 new IllegalArgumentException("Object not exist")));
+        mav.addObject("parameter", new Parameter());
         mav.addObject("parameters", parameterRepository.findParametersByDeviceId(deviceId));
 
         return mav;
     }
 
 
+    @PostMapping("/show/{id}")
+    public ModelAndView saveParameter(@ModelAttribute("parameter") Parameter parameter) {
+        ModelAndView mav = new ModelAndView("device-show");
+        mav.addObject("device", deviceRepository.findById(parameter.getDevice().getId()).orElseThrow(()->
+                new IllegalArgumentException("Object not exist")));
+        parameterRepository.save(parameter);
+        return new ModelAndView("redirect:/show/" + parameter.getDevice().getId());
+    }
 
 
     @GetMapping("/addcategory")
