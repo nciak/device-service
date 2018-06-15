@@ -66,56 +66,52 @@
 
                     <form th:action="@{/add}" th:object="${device}" method="post">
 
-                        <input type="hidden" th:field="${device.id}" th:value="${device.id}" />
+                            <input type="hidden" th:field="${device.id}" th:value="${device.id}" />
 
-                        <div >
-                            <label th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
-                                   for="name">Device name:</label><br/>
+                            <div >
+                                <label th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
+                                       for="name">Device name:</label><br/>
 
-                            <input
-                                    th:field="${device.name}"
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    th:class="${#fields.hasErrors('name') ? 'error' : ''}"/>
+                                <input
+                                        th:field="${device.name}"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        th:class="${#fields.hasErrors('name') ? 'error' : ''}"/>
 
-                            <p
-                                    th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
-                                    th:if="${#fields.hasErrors('name')}"
-                                    th:errors="${device.name}"></p>
-                        </div>
+                                <p
+                                        th:class="${#fields.hasErrors('name') ? 'error-text' : ''}"
+                                        th:if="${#fields.hasErrors('name')}"
+                                        th:errors="${device.name}"></p>
+                            </div>
 
-                        <div>
-                            <label th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
-                                   for="name">Device description:</label><br/>
+                            <div>
+                                <label th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
+                                       for="name">Device description:</label><br/>
 
-                            <input
-                                    th:field="${device.description}"
-                                    type="text"
-                                    id="description"
-                                    name="description"
-                                    th:class="${#fields.hasErrors('description') ? 'error' : ''}"/>
+                                <input
+                                        th:field="${device.description}"
+                                        type="text"
+                                        id="description"
+                                        name="description"
+                                        th:class="${#fields.hasErrors('description') ? 'error' : ''}"/>
 
-                            <p
-                                    th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
-                                    th:if="${#fields.hasErrors('description')}"
-                                    th:errors="${device.description}"></p>
-                        </div>
-                        <div>
-                            <label th:class="${#fields.hasErrors('category.id') ? 'error-text' : ''}"
-                                   for="category">Category:</label><br/>
+                                <p
+                                        th:class="${#fields.hasErrors('description') ? 'error-text' : ''}"
+                                        th:if="${#fields.hasErrors('description')}"
+                                        th:errors="${device.description}"></p>
+                            </div>
+                            <div>
+                                <label th:class="${#fields.hasErrors('category.id') ? 'error-text' : ''}"
+                                       for="category">Category:</label><br/>
 
-                            <select class="form-control" th:field="${device.category.id}"  id="category">
-                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-                            </select>
-                        </div>
-
-
+                                <select class="form-control" th:field="${device.category.id}"  id="category">
+                                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                                </select>
+                            </div>
 
 
-
-
-                        <input type="submit" name="submit" value="Add"> </input>
+                            <input type="submit" name="submit" value="Add"> </input>
                     </form>
 
             </div>

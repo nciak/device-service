@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "DEVICES")
+@Table(name = "DEVICE")
 public class Device {
 
 
@@ -14,14 +14,16 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @ManyToOne(targetEntity=Category.class)
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "device")
     private List<Parameter> parameters;
 
     public Long getId() {
@@ -54,6 +56,14 @@ public class Device {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Parameter> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<Parameter> parameters) {
+        this.parameters = parameters;
     }
 
     @Override

@@ -31,6 +31,7 @@ public class DeviceController {
     public ModelAndView getDeviceList() {
         ModelAndView mav = new ModelAndView("device-list");
         mav.addObject("list", deviceRepository.findAll());
+        mav.addObject("parameter", new Parameter());
         return mav;
     }
 
@@ -39,6 +40,7 @@ public class DeviceController {
         ModelAndView mav = new ModelAndView("device-form");
         mav.addObject("device", new Device());
         mav.addObject("categories", categoryRepository.findAll());
+
         return mav;
     }
 
@@ -50,11 +52,14 @@ public class DeviceController {
 
         if (bindingResult.hasErrors()) {
             mav.addObject("device", device);
+
             mav.setViewName("device-form");
         } else {
             deviceRepository.save(device);
-            mav.setViewName("redirect:/");
+            mav.setViewName("redirect:/show/"+device.getId());
         }
+
+
         return mav;
     }
 
@@ -64,8 +69,6 @@ public class DeviceController {
         mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
                 new IllegalArgumentException("Object not exist")));
         mav.addObject("categories", categoryRepository.findAll());
-
-
         return mav;
     }
 
@@ -74,6 +77,8 @@ public class DeviceController {
         deviceRepository.deleteById(deviceId);
         return "redirect:/";
     }
+
+
 
     @GetMapping("/show/{id}")
     public ModelAndView showDevice( @PathVariable("id") Long deviceId) {
@@ -84,6 +89,9 @@ public class DeviceController {
 
         return mav;
     }
+
+
+
 
     @GetMapping("/addcategory")
     public ModelAndView addCategoryForm() {
@@ -107,4 +115,7 @@ public class DeviceController {
         }
         return mav;
     }
+
+
 }
+

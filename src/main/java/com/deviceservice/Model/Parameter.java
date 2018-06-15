@@ -9,21 +9,24 @@ public class Parameter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private Long id;
 
+    @Column(name = "NAME")
     private String name;
 
+    @Column(name = "VALUE")
     private String value;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="DEVICE")
     private Device device;
 
-    public int getId() {
-        return Id;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,7 +56,7 @@ public class Parameter {
     @Override
     public String toString() {
         return "Parameter{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", value='" + value + '\'' +
                 ", device=" + device +

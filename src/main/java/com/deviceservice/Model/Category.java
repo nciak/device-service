@@ -11,6 +11,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "NAME")
     private String name;
 
     @OneToMany(targetEntity=Device.class,mappedBy="category",cascade={CascadeType.ALL},orphanRemoval=true)
