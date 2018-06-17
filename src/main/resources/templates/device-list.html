@@ -69,6 +69,7 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Category</th>
+                        <th>Status</th>
                         <th>Options</th>
 
                     </tr>
@@ -78,6 +79,7 @@
                         <td th:text="${device.id}">Id</td>
                         <td th:text="${device.name}">Name</td>
                         <td th:text="${device.category.name}">Name</td>
+                        <td th:text="${device.status.value}">Name</td>
                         <td><a th:href="@{/edit/{id}(id=${device.id})}">Edit</a> -
                         <a th:href="@{/remove/{id}(id=${device.id})}">Remove</a> -
                         <a th:href="@{/show/{id}(id=${device.id})}">Show Device</a>

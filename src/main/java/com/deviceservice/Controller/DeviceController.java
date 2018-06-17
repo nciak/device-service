@@ -3,10 +3,12 @@ package com.deviceservice.Controller;
 import com.deviceservice.Model.Category;
 import com.deviceservice.Model.Device;
 import com.deviceservice.Model.Parameter;
+import com.deviceservice.Model.Status;
 import com.deviceservice.Repository.CategoryRepository;
 import com.deviceservice.Repository.DeviceRepository;
 
 import com.deviceservice.Repository.ParameterRepository;
+import com.deviceservice.Repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,11 +29,15 @@ public class DeviceController {
     @Autowired
     ParameterRepository parameterRepository;
 
+    @Autowired
+    StatusRepository statusRepository;
+
+
+
     @RequestMapping("/")
     public ModelAndView getDeviceList() {
         ModelAndView mav = new ModelAndView("device-list");
         mav.addObject("list", deviceRepository.findAll());
-        mav.addObject("parameter", new Parameter());
         return mav;
     }
 
@@ -40,7 +46,7 @@ public class DeviceController {
         ModelAndView mav = new ModelAndView("device-form");
         mav.addObject("device", new Device());
         mav.addObject("categories", categoryRepository.findAll());
-
+        mav.addObject("statuses", statusRepository.findAll());
         return mav;
     }
 
@@ -49,6 +55,7 @@ public class DeviceController {
                                  BindingResult bindingResult) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("categories", categoryRepository.findAll());
+        mav.addObject("statuses", statusRepository.findAll());
 
         if (bindingResult.hasErrors()) {
             mav.addObject("device", device);
@@ -69,6 +76,7 @@ public class DeviceController {
         mav.addObject("device", deviceRepository.findById(deviceId).orElseThrow(()->
                 new IllegalArgumentException("Object not exist")));
         mav.addObject("categories", categoryRepository.findAll());
+        mav.addObject("statuses", statusRepository.findAll());
         return mav;
     }
 

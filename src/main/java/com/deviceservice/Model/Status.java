@@ -16,7 +16,7 @@ public class Status {
         @Column(name = "VALUE")
         private String value;
 
-        @OneToMany(targetEntity=Device.class,mappedBy="status",cascade={CascadeType.ALL},orphanRemoval=true)
+        @OneToMany(targetEntity=Device.class,mappedBy="status",cascade={CascadeType.ALL})
         private List<Device> devices;
 
 
